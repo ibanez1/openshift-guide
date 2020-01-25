@@ -9,7 +9,7 @@ WORKDIR /tmp/app
 
 COPY --chown=node . .
 
-ENV NODE_OPTIONS=--max-old-space-size=360
+ENV NODE_OPTIONS=--max-old-space-size=128
 RUN echo "NodeJS $(node -v) memory config:" && node -p "v8.getHeapStatistics()"
 RUN npm i
 RUN npm run build && mv www /home/node/app && rm -fr /tmp/app
